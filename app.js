@@ -25,9 +25,11 @@ function getSnapshotList() {
                 //if(days>1){delete snapshot(create function to delete snapshot of matching ID)}
                 let x = data.snapshots[i].created_at.slice(0, 10)
                 let y = data.snapshots[i].id
-                if (checkAge(x) > 2) {
-                    console.log(`Snapshot ID ${y} created on ${x} is ${checkAge(x)} days old and should be deleted`)
+                if (checkAge(x) < 3) {
+                   
+                    console.log(`Snapshot ID ${y} created on ${x} is ${checkAge(x)} days old and should not be deleted`)
                 } else {
+                   deleteSnapshot(y)
                     console.log(`Snapshot ID ${y} created on ${x} is ${checkAge(x)} days old and should be kept`)
                 }
 
@@ -44,5 +46,26 @@ function checkAge(x) {
 }
 
 //function to delete old snapshot
+function deleteSnapshot(y){
+    var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Authorization", "Bearer b55f0a04ae134281f185d86f0e2f5456baa43a6dfddb7edc3cbf30a5877c1985");
+myHeaders.append("Cookie", "__cfduid=dcea941712d2e0d1fbac975de663b92ac1586247452");
+
+var requestOptions = {
+  method: 'DELETE',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+const apiURL = "https://api.digitalocean.com/v2/snapshots/"
+let apendedapiURL = apiURL.concat(y)
+console.log(apendedapiURL)
+fetch(apendedapiURL, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+}
+//-------------------------------------------------------------------------------------------------------------------
 //function to get list of snapshot
 getSnapshotList();

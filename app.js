@@ -4,6 +4,21 @@
 // let today = Date.now()
 // let newCurDate = Math.floor(date.date2()+10);
 
+var schedule = require('./node-schedule');
+var cron = require('./node-cron');
+cron.schedule('*/2 * * * *', () => {
+    console.log('running a task every minute');
+  });
+var jschedule = cronjob();
+
+console.log(jschedule)
+
+function cronjob() {
+    return schedule.scheduleJob('*/2 * * * *', function () {
+        console.log('The answer to life, the universe, and everything!');
+    });
+}
+
 function getSnapshotList() {
 
     var myHeaders = new Headers();
@@ -68,4 +83,5 @@ fetch(apendedapiURL, requestOptions)
 }
 //-------------------------------------------------------------------------------------------------------------------
 //function to get list of snapshot
-getSnapshotList();
+getSnapshotList()
+

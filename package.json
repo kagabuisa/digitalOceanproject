@@ -1,0 +1,27 @@
+{
+  "name": "automanagedroplets",
+  "version": "1.0.0",
+  "description": "app to automatically manage digital ocean cloud resources using the digital ocean API",
+  "main": "index.js",
+  "dependencies": {
+    "node-cron": "^2.0.3",
+    "node-schedule": "^1.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "hello world"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kagabuisa/digitalOceanproject.git"
+  },
+  "keywords": [
+    "automanage"
+  ],
+  "author": "Kagabu Isa",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/kagabuisa/digitalOceanproject/issues"
+  },
+  "homepage": "https://github.com/kagabuisa/digitalOceanproject#readme"
+}
